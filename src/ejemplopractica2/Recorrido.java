@@ -48,7 +48,7 @@ public class Recorrido extends Thread {
                 } else {
                     //De regreso
                     //Si no ha llegado al inicio
-                    if (vehiculoPosX > 15) {
+                    if (vehiculoPosX > 125) {
                         //Retroceder el vehiculo
                         vehiculo.setLocation(vehiculoPosX - 10, vehiculo.getLocation().y);
                     } else {

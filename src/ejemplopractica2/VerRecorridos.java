@@ -35,9 +35,18 @@ public class VerRecorridos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         DestinoLbl = new javax.swing.JLabel();
         Vehiculo2Lbl = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        TodosBtn = new javax.swing.JButton();
         Vehiculo1Lbl = new javax.swing.JLabel();
         Vehiculo3Lbl = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Vehiculo1Btn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Vehiculo2Btn = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        Vehiculo3Btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -54,28 +63,61 @@ public class VerRecorridos extends javax.swing.JFrame {
         jPanel1.add(DestinoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 10, 30, 570));
 
         Vehiculo2Lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/repartidor_ida.png"))); // NOI18N
-        jPanel1.add(Vehiculo2Lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 130));
+        jPanel1.add(Vehiculo2Lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 130, 130));
 
-        jButton1.setText("Iniciar Todos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        TodosBtn.setText("Enviar Todos");
+        TodosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                TodosBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 590, -1, -1));
+        jPanel1.add(TodosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 10, -1, -1));
 
         Vehiculo1Lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/repartidor_ida.png"))); // NOI18N
-        jPanel1.add(Vehiculo1Lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, 130));
+        jPanel1.add(Vehiculo1Lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 130, 130));
 
         Vehiculo3Lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/repartidor_ida.png"))); // NOI18N
-        jPanel1.add(Vehiculo3Lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 130, 130));
+        jPanel1.add(Vehiculo3Lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 130, 130));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 630));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Motocicleta 1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Distancia:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        Vehiculo1Btn.setText("Enviar");
+        jPanel1.add(Vehiculo1Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Motocicleta 2");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Distancia:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        Vehiculo2Btn.setText("Enviar");
+        jPanel1.add(Vehiculo2Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Motocicleta 3");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Distancia:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
+
+        Vehiculo3Btn.setText("Enviar");
+        jPanel1.add(Vehiculo3Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void TodosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TodosBtnActionPerformed
         // TODO add your handling code here:
         Recorrido rec1 = new Recorrido(Vehiculo1Lbl, 2);
         Recorrido rec2 = new Recorrido(Vehiculo2Lbl, 10);
@@ -84,7 +126,7 @@ public class VerRecorridos extends javax.swing.JFrame {
         rec1.start();
         rec2.start();
         rec3.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_TodosBtnActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -135,10 +177,19 @@ public class VerRecorridos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel DestinoLbl;
+    private javax.swing.JButton TodosBtn;
+    private javax.swing.JButton Vehiculo1Btn;
     public static javax.swing.JLabel Vehiculo1Lbl;
+    private javax.swing.JButton Vehiculo2Btn;
     public static javax.swing.JLabel Vehiculo2Lbl;
+    private javax.swing.JButton Vehiculo3Btn;
     public static javax.swing.JLabel Vehiculo3Lbl;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
