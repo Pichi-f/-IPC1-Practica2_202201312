@@ -15,6 +15,10 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        //No se cambie el tamaño de la ventana
+        this.setResizable(false);
+        //Utilizado para visualizar en el centro la ventana
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +30,66 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        RegistroProductoBtn = new javax.swing.JButton();
+        PedidoBtn = new javax.swing.JButton();
+        HistorialBtn = new javax.swing.JButton();
+        GuardarBtn = new javax.swing.JButton();
+        ImportarBtn = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Inicio");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        RegistroProductoBtn.setText("Registro de Productos");
+        RegistroProductoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistroProductoBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RegistroProductoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 180, 40));
+
+        PedidoBtn.setText("Preparación de Pedido");
+        PedidoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PedidoBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PedidoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, 40));
+
+        HistorialBtn.setText("Historial de Pedidos");
+        jPanel1.add(HistorialBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 180, 40));
+
+        GuardarBtn.setText("Guardar Información");
+        jPanel1.add(GuardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 180, 40));
+
+        ImportarBtn.setText("Importar Información");
+        jPanel1.add(ImportarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 180, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegistroProductoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroProductoBtnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        RegistroProducto rp = new RegistroProducto();
+        rp.setVisible(true);
+    }//GEN-LAST:event_RegistroProductoBtnActionPerformed
+
+    private void PedidoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidoBtnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        PreparacionPedido pp = new PreparacionPedido();
+        pp.setVisible(true);
+    }//GEN-LAST:event_PedidoBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +127,12 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton GuardarBtn;
+    private javax.swing.JButton HistorialBtn;
+    private javax.swing.JButton ImportarBtn;
+    private javax.swing.JButton PedidoBtn;
+    private javax.swing.JButton RegistroProductoBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

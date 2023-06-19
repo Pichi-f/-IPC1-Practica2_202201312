@@ -15,6 +15,10 @@ public class RegistroProducto extends javax.swing.JFrame {
      */
     public RegistroProducto() {
         initComponents();
+        //No se cambie el tamaño de la ventana
+        this.setResizable(false);
+        //Utilizado para visualizar en el centro la ventana
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,11 +34,16 @@ public class RegistroProducto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        PrecioImput = new javax.swing.JTextField();
+        NombreImput = new javax.swing.JTextField();
+        RegistrarBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,16 +57,39 @@ public class RegistroProducto extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre Producto:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 290, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 290, -1));
+        jPanel1.add(PrecioImput, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 290, -1));
+        jPanel1.add(NombreImput, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 290, -1));
 
-        jButton1.setText("Registrar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
+        RegistrarBtn.setText("Registrar");
+        RegistrarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RegistrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Inicio in = new Inicio();
+        in.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void RegistrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarBtnActionPerformed
+        // TODO add your handling code here:
+        String nombre = NombreImput.getText();
+        String precio = PrecioImput.getText();
+        
+        Producto nuevoProducto = new Producto(nombre, precio);
+        int contadorProductos = PreparacionPedido.contadorProductos;
+        PreparacionPedido.productos[contadorProductos] = nuevoProducto;
+        PreparacionPedido.contadorProductos++;
+    }//GEN-LAST:event_RegistrarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,12 +127,12 @@ public class RegistroProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField NombreImput;
+    private javax.swing.JTextField PrecioImput;
+    private javax.swing.JButton RegistrarBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
