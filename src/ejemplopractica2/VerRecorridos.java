@@ -4,6 +4,8 @@
  */
 package ejemplopractica2;
 
+import static ejemplopractica2.PreparacionPedido.DistanciaImput;
+import static ejemplopractica2.PreparacionPedido.VehiculoCbo;
 import javax.swing.JLabel;
 
 /**
@@ -15,6 +17,16 @@ public class VerRecorridos extends javax.swing.JFrame {
     /**
      * Creates new form VerRecorridos
      */
+    public String distancia1;
+    public String distancia2;
+    public String distancia3;
+    public String moto;
+    
+    public static Distancia[] distancias = new Distancia[50];
+    public static int contadorDistancias;
+    
+    public String distancia;
+
     public VerRecorridos() {
         initComponents();
         //No se cambie el tamaño de la ventana
@@ -88,6 +100,11 @@ public class VerRecorridos extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         Vehiculo1Btn.setText("Enviar");
+        Vehiculo1Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Vehiculo1BtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(Vehiculo1Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -99,6 +116,11 @@ public class VerRecorridos extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         Vehiculo2Btn.setText("Enviar");
+        Vehiculo2Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Vehiculo2BtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(Vehiculo2Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -110,6 +132,11 @@ public class VerRecorridos extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
 
         Vehiculo3Btn.setText("Enviar");
+        Vehiculo3Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Vehiculo3BtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(Vehiculo3Btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 610));
@@ -119,9 +146,11 @@ public class VerRecorridos extends javax.swing.JFrame {
 
     private void TodosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TodosBtnActionPerformed
         // TODO add your handling code here:
-        Recorrido rec1 = new Recorrido(Vehiculo1Lbl, 2);
-        Recorrido rec2 = new Recorrido(Vehiculo2Lbl, 10);
-        Recorrido rec3 = new Recorrido(Vehiculo3Lbl, 5);
+        distancia =DistanciaImput.getText();
+        
+        Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia));
+        Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia));
+        Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia));
 
         rec1.start();
         rec2.start();
@@ -134,6 +163,42 @@ public class VerRecorridos extends javax.swing.JFrame {
         PreparacionPedido pp = new PreparacionPedido();
         pp.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void Vehiculo1BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vehiculo1BtnActionPerformed
+        // TODO add your handling code here:
+
+        moto = (String) VehiculoCbo.getSelectedItem();
+        distancia =DistanciaImput.getText();
+
+        if (moto == "Motocicleta 1") {
+            Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia));
+            rec1.start();
+        }
+    }//GEN-LAST:event_Vehiculo1BtnActionPerformed
+
+    private void Vehiculo2BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vehiculo2BtnActionPerformed
+        // TODO add your handling code here:
+        
+        moto = (String) VehiculoCbo.getSelectedItem();
+        distancia = DistanciaImput.getText();
+
+        if (moto == "Motocicleta 2") {
+            Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia));
+            rec2.start();
+        }
+    }//GEN-LAST:event_Vehiculo2BtnActionPerformed
+
+    private void Vehiculo3BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vehiculo3BtnActionPerformed
+        // TODO add your handling code here:
+        
+        moto = (String) VehiculoCbo.getSelectedItem();
+        distancia = DistanciaImput.getText();
+
+        if (moto == "Motocicleta 3") {
+            Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia));
+            rec3.start();
+        }
+    }//GEN-LAST:event_Vehiculo3BtnActionPerformed
 
     /**
      * @param args the command line arguments

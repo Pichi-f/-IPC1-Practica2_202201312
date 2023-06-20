@@ -4,6 +4,8 @@
  */
 package ejemplopractica2;
 
+import static ejemplopractica2.VerRecorridos.Vehiculo1Lbl;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,9 +20,14 @@ public class PreparacionPedido extends javax.swing.JFrame {
      */
     public static Producto[] productos = new Producto[50];
     public static int contadorProductos;
+    
+    
 
     public String nombre;
     public String precio;
+    public String distancia1;
+    public String distancia2;
+    public String moto;
 
     public PreparacionPedido() {
         initComponents();
@@ -49,9 +56,9 @@ public class PreparacionPedido extends javax.swing.JFrame {
         ListadoProductos = new javax.swing.JTable();
         AgregarProductoBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        VehiculoCbo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        DistanciaImput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         AcumuladoLbl = new javax.swing.JLabel();
@@ -113,12 +120,12 @@ public class PreparacionPedido extends javax.swing.JFrame {
         jLabel3.setText("Vehiculo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motocicleta 1", "Motocicleta 2", "Motocicleta 3" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+        VehiculoCbo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "null", "Motocicleta 1", "Motocicleta 2", "Motocicleta 3" }));
+        jPanel1.add(VehiculoCbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         jLabel4.setText("Dsitancia a Recorrer");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 30, -1));
+        jPanel1.add(DistanciaImput, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 30, -1));
 
         jLabel5.setText("Km");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
@@ -143,6 +150,17 @@ public class PreparacionPedido extends javax.swing.JFrame {
         this.setVisible(false);
         VerRecorridos vr = new VerRecorridos();
         vr.setVisible(true);
+
+        moto = (String) VehiculoCbo.getSelectedItem();
+        String distancia1 = DistanciaImput.getText();
+        String distancia2 = DistanciaImput.getText();
+        
+        String distancias = DistanciaImput.getText();
+        
+        Distancia nuevaDistancia = new Distancia(distancias);
+        int contadorDistancias = VerRecorridos.contadorDistancias;
+        VerRecorridos.distancias[contadorDistancias] = nuevaDistancia;
+        VerRecorridos.contadorDistancias++;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -155,24 +173,23 @@ public class PreparacionPedido extends javax.swing.JFrame {
     private void AgregarProductoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoBtnActionPerformed
         // TODO add your handling code here:
         int filaSeleccionada = ListadoProductos.getSelectedRow();
-        
+
         //nombre = ListadoProductos.getModel().getValueAt(filaSeleccionada, 1).toString();
         //precio = ListadoProductos.getModel().getValueAt(filaSeleccionada, 2).toString();
-        
         if (filaSeleccionada != -1) {
             String nombre, precio;
             nombre = ListadoProductos.getValueAt(filaSeleccionada, 0).toString();
             precio = ListadoProductos.getValueAt(filaSeleccionada, 1).toString();
-            
-            String datos [] = {nombre, precio};
-            DefaultTableModel modeloProducto = (DefaultTableModel)ListadoPedidos.getModel();
+
+            String datos[] = {nombre, precio};
+            DefaultTableModel modeloProducto = (DefaultTableModel) ListadoPedidos.getModel();
             modeloProducto.addRow(datos);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Error debe seleccionar un registro");
         }
-        
+
         sumar();
-        
+
     }//GEN-LAST:event_AgregarProductoBtnActionPerformed
 
     public void actualizarListadoProductos() {
@@ -195,9 +212,9 @@ public class PreparacionPedido extends javax.swing.JFrame {
             fila = Integer.parseInt(ListadoPedidos.getValueAt(i, 1).toString());
             total += fila;
         }
-        AcumuladoLbl.setText("Total: Q "+total);
+        AcumuladoLbl.setText("Total: Q " + total);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -236,10 +253,11 @@ public class PreparacionPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AcumuladoLbl;
     private javax.swing.JButton AgregarProductoBtn;
+    public static javax.swing.JTextField DistanciaImput;
     private javax.swing.JTable ListadoPedidos;
     private javax.swing.JTable ListadoProductos;
+    public static javax.swing.JComboBox<String> VehiculoCbo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -248,6 +266,5 @@ public class PreparacionPedido extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

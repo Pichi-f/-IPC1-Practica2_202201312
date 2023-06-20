@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 public class Recorrido extends Thread {
 
     JLabel vehiculo;
-    int distancia;
+    public int distancia;
     boolean regreso;
 
     final int posDestino = VerRecorridos.DestinoLbl.getLocation().x;
@@ -31,7 +31,7 @@ public class Recorrido extends Thread {
         while (true) {
             try {
                 //delay
-                sleep(10 * distancia);
+                sleep( distancia/1);
 
                 //Obtener la posición del vehiculo en X
                 int vehiculoPosX = vehiculo.getLocation().x;
@@ -41,7 +41,7 @@ public class Recorrido extends Thread {
                     //Si no ha llegado al destino
                     if (vehiculoPosX < posDestino - 125) {
                         //Avanzar el vehiculo
-                        vehiculo.setLocation(vehiculoPosX + 10, vehiculo.getLocation().y);
+                        vehiculo.setLocation(vehiculoPosX + 1, vehiculo.getLocation().y);
                     } else {
                         regreso = true;
                     }
@@ -50,7 +50,7 @@ public class Recorrido extends Thread {
                     //Si no ha llegado al inicio
                     if (vehiculoPosX > 125) {
                         //Retroceder el vehiculo
-                        vehiculo.setLocation(vehiculoPosX - 10, vehiculo.getLocation().y);
+                        vehiculo.setLocation(vehiculoPosX - 1, vehiculo.getLocation().y);
                     } else {
                         break;
                     }
