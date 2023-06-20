@@ -20,14 +20,19 @@ public class PreparacionPedido extends javax.swing.JFrame {
      */
     public static Producto[] productos = new Producto[50];
     public static int contadorProductos;
-    
-    
+   
 
     public String nombre;
     public String precio;
     public String distancia1;
     public String distancia2;
     public String moto;
+    
+    public String vehiculo;
+    public String distancia;
+    public String monto;
+    public String creacion;
+    public String entrega;
 
     public PreparacionPedido() {
         initComponents();
@@ -151,16 +156,26 @@ public class PreparacionPedido extends javax.swing.JFrame {
         VerRecorridos vr = new VerRecorridos();
         vr.setVisible(true);
 
-        moto = (String) VehiculoCbo.getSelectedItem();
+        /* moto = (String) VehiculoCbo.getSelectedItem();
         String distancia1 = DistanciaImput.getText();
-        String distancia2 = DistanciaImput.getText();
-        
+        String distancia2 = DistanciaImput.getText();*/
+
         String distancias = DistanciaImput.getText();
-        
+
         Distancia nuevaDistancia = new Distancia(distancias);
         int contadorDistancias = VerRecorridos.contadorDistancias;
         VerRecorridos.distancias[contadorDistancias] = nuevaDistancia;
         VerRecorridos.contadorDistancias++;
+
+        vehiculo = (String) VehiculoCbo.getSelectedItem();
+        distancia = DistanciaImput.getText();
+        monto = AcumuladoLbl.getText();
+
+        
+        Historial nuevoHistorial = new Historial(vehiculo, distancia, monto, creacion, entrega);
+        int contadorHistoriales = HistorialPedido.contadorHistoriales;
+        HistorialPedido.historiales[contadorHistoriales] = nuevoHistorial;
+        HistorialPedido.contadorHistoriales++;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

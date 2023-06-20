@@ -64,6 +64,11 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(PedidoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, 40));
 
         HistorialBtn.setText("Historial de Pedidos");
+        HistorialBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HistorialBtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(HistorialBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 180, 40));
 
         GuardarBtn.setText("Guardar Información");
@@ -90,6 +95,13 @@ public class Inicio extends javax.swing.JFrame {
         PreparacionPedido pp = new PreparacionPedido();
         pp.setVisible(true);
     }//GEN-LAST:event_PedidoBtnActionPerformed
+
+    private void HistorialBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialBtnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        HistorialPedido hp = new HistorialPedido();
+        hp.setVisible(true);
+    }//GEN-LAST:event_HistorialBtnActionPerformed
 
     /**
      * @param args the command line arguments
