@@ -21,6 +21,10 @@ public class HistorialPedido extends javax.swing.JFrame {
     public HistorialPedido() {
         initComponents();
         actualizarListadoHistorial();
+        //No se cambie el tamaño de la ventana
+        this.setResizable(false);
+        //Utilizado para visualizar en el centro la ventana
+        this.setLocationRelativeTo(null);
     }
 
     /**

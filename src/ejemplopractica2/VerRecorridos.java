@@ -6,6 +6,9 @@ package ejemplopractica2;
 
 import static ejemplopractica2.PreparacionPedido.DistanciaImput;
 import static ejemplopractica2.PreparacionPedido.VehiculoCbo;
+import static ejemplopractica2.PreparacionPedido.distancia1;
+import static ejemplopractica2.PreparacionPedido.distancia2;
+import static ejemplopractica2.PreparacionPedido.distancia3;
 import javax.swing.JLabel;
 
 /**
@@ -17,9 +20,6 @@ public class VerRecorridos extends javax.swing.JFrame {
     /**
      * Creates new form VerRecorridos
      */
-    public String distancia1;
-    public String distancia2;
-    public String distancia3;
     public String moto;
 
     public static Distancia[] distancias = new Distancia[50];
@@ -148,19 +148,15 @@ public class VerRecorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
         moto = (String) VehiculoCbo.getSelectedItem();
 
-        distancia1 = DistanciaImput.getText();
-
-        distancia2 = DistanciaImput.getText();
-
-        distancia3 = DistanciaImput.getText();
-
         Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia1));
-        Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia2));
-        Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia3));
-
         rec1.start();
+
+        Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia2));
         rec2.start();
+
+        Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia3));
         rec3.start();
+
     }//GEN-LAST:event_TodosBtnActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -174,9 +170,9 @@ public class VerRecorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia1 = DistanciaImput.getText();
 
         if (moto == "Motocicleta 1") {
+            String distancia1 = DistanciaImput.getText();
             Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia1));
             rec1.start();
         }
@@ -186,9 +182,9 @@ public class VerRecorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia2 = DistanciaImput.getText();
 
         if (moto == "Motocicleta 2") {
+            String distancia2 = DistanciaImput.getText();
             Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia2));
             rec2.start();
         }
@@ -198,9 +194,9 @@ public class VerRecorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia3 = DistanciaImput.getText();
 
         if (moto == "Motocicleta 3") {
+            String distancia3 = DistanciaImput.getText();
             Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia3));
             rec3.start();
         }
@@ -220,16 +216,24 @@ public class VerRecorridos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerRecorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerRecorridos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerRecorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerRecorridos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerRecorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerRecorridos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerRecorridos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerRecorridos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -5,6 +5,7 @@
 package ejemplopractica2;
 
 import static ejemplopractica2.VerRecorridos.Vehiculo1Lbl;
+import java.util.Calendar;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,20 +21,22 @@ public class PreparacionPedido extends javax.swing.JFrame {
      */
     public static Producto[] productos = new Producto[50];
     public static int contadorProductos;
-   
 
     public String nombre;
     public String precio;
-    public String distancia1;
-    public String distancia2;
-    public String distancia3;
+    public static String distancia1;
+    public static String distancia2;
+    public static String distancia3;
     public String moto;
-    
+
     public String vehiculo;
     public String distancia;
     public String monto;
     public String creacion;
     public String entrega;
+
+    static Calendar Hora = Calendar.getInstance();
+    static Calendar Fecha = Calendar.getInstance();
 
     public PreparacionPedido() {
         initComponents();
@@ -157,10 +160,28 @@ public class PreparacionPedido extends javax.swing.JFrame {
         VerRecorridos vr = new VerRecorridos();
         vr.setVisible(true);
 
+        int hora, minutos, segundos, dia, mes, anno;
+        String FechaActual, HoraActual;
+        hora = Hora.get(Calendar.HOUR_OF_DAY);
+        minutos = Hora.get(Calendar.MINUTE);
+        segundos = Hora.get(Calendar.SECOND);
+        dia = Fecha.get(Calendar.DATE);
+        mes = Fecha.get(Calendar.MONTH);
+        anno = Fecha.get(Calendar.YEAR);
+        HoraActual = hora + ":" + minutos + ":" + segundos;
+        FechaActual = dia + "/" + (mes + 1) + "/" + anno;
+
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia1 = DistanciaImput.getText();
-        distancia2 = DistanciaImput.getText();
-        distancia3 = DistanciaImput.getText();
+
+        if (moto == "Motocicleta 1") {
+            distancia1 = DistanciaImput.getText();
+        } else if (moto == "Motocicleta 2") {
+            distancia2 = DistanciaImput.getText();
+        } else if (moto == "Motocicleta 3") {
+            distancia3 = DistanciaImput.getText();
+        } else {
+            System.out.println("Invalido");
+        }
 
         String distancias = DistanciaImput.getText();
 
@@ -172,8 +193,8 @@ public class PreparacionPedido extends javax.swing.JFrame {
         vehiculo = (String) VehiculoCbo.getSelectedItem();
         distancia = DistanciaImput.getText();
         monto = AcumuladoLbl.getText();
+        creacion = FechaActual + " - " + HoraActual;
 
-        
         Historial nuevoHistorial = new Historial(vehiculo, distancia, monto, creacion, entrega);
         int contadorHistoriales = HistorialPedido.contadorHistoriales;
         HistorialPedido.historiales[contadorHistoriales] = nuevoHistorial;
