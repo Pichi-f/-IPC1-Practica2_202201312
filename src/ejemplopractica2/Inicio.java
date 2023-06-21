@@ -4,6 +4,12 @@
  */
 package ejemplopractica2;
 
+import static ejemplopractica2.HistorialPedido.historiales;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author USUARIO
@@ -13,6 +19,15 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    public static Distancia[] distancias = new Distancia[50];
+    public static int contadorDistancias;
+
+    public String vehiculo;
+    public String distancia;
+    public String monto;
+    public String creacion;
+    public String entrega;
+
     public Inicio() {
         initComponents();
         //No se cambie el tamaño de la ventana
@@ -72,9 +87,19 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(HistorialBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 180, 40));
 
         GuardarBtn.setText("Guardar Información");
+        GuardarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarBtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(GuardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 180, 40));
 
         ImportarBtn.setText("Importar Información");
+        ImportarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImportarBtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(ImportarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 180, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
@@ -102,6 +127,53 @@ public class Inicio extends javax.swing.JFrame {
         HistorialPedido hp = new HistorialPedido();
         hp.setVisible(true);
     }//GEN-LAST:event_HistorialBtnActionPerformed
+
+    private void GuardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarBtnActionPerformed
+        // TODO add your handling code here:
+
+        /*Historial nuevoHistorial = new Historial(vehiculo, distancia, monto, creacion, entrega);
+        int contadorHistoriales = HistorialPedido.contadorHistoriales;
+        HistorialPedido.historiales[contadorHistoriales] = nuevoHistorial;
+        HistorialPedido.contadorHistoriales++;*/
+        try {
+            FileOutputStream archivo = new FileOutputStream("./Respaldo.txt");
+            ObjectOutputStream salida = new ObjectOutputStream(archivo);
+            salida.writeObject(historiales);
+            salida.close();
+            archivo.close();
+            System.out.println("Se ha respaldado su programa en: Respaldo.txt");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_GuardarBtnActionPerformed
+
+    private void ImportarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            FileInputStream archivo = new FileInputStream("./Respaldo.txt");
+            ObjectInputStream entrada = new ObjectInputStream(archivo);
+            Historial[] auxiliar = new Historial[50];
+            auxiliar = (Historial[]) entrada.readObject();
+            entrada.close();
+            archivo.close();
+
+            /*Historial nuevoHistorial = new Historial(vehiculo, distancia, monto, creacion, entrega);
+            int contadorHistoriales = HistorialPedido.contadorHistoriales;
+            HistorialPedido.historiales[contadorHistoriales] = nuevoHistorial;
+            HistorialPedido.contadorHistoriales++;*/
+            for (int i = 0; i < auxiliar.length; i++) {
+                Historial obj = new Historial(auxiliar[i].vehiculo, auxiliar[i].distancia, auxiliar[i].monto, auxiliar[i].creacion, auxiliar[i].entrega);
+                historiales[i] = obj;
+                HistorialPedido.contadorHistoriales++;
+            }
+            
+            
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_ImportarBtnActionPerformed
 
     /**
      * @param args the command line arguments

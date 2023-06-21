@@ -81,15 +81,16 @@ public class HistorialPedido extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void actualizarListadoHistorial() {
+    public static void actualizarListadoHistorial() {
 
-        if (contadorHistoriales > 0) {
+        if (contadorHistoriales >0) {
 
             //Actualizar listado
             DefaultTableModel modeloListado = (DefaultTableModel) ListadoHistorial.getModel();
             modeloListado.setRowCount(contadorHistoriales);
 
             for (int i = 0; i < contadorHistoriales; i++) {
+                
                 modeloListado.setValueAt(historiales[i].vehiculo, i, 0);
                 modeloListado.setValueAt(historiales[i].distancia, i, 1);
                 modeloListado.setValueAt(historiales[i].monto, i, 2);
@@ -133,7 +134,7 @@ public class HistorialPedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable ListadoHistorial;
+    public static javax.swing.JTable ListadoHistorial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -21,10 +21,10 @@ public class VerRecorridos extends javax.swing.JFrame {
     public String distancia2;
     public String distancia3;
     public String moto;
-    
+
     public static Distancia[] distancias = new Distancia[50];
     public static int contadorDistancias;
-    
+
     public String distancia;
 
     public VerRecorridos() {
@@ -146,11 +146,17 @@ public class VerRecorridos extends javax.swing.JFrame {
 
     private void TodosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TodosBtnActionPerformed
         // TODO add your handling code here:
-        distancia =DistanciaImput.getText();
-        
-        Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia));
-        Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia));
-        Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia));
+        moto = (String) VehiculoCbo.getSelectedItem();
+
+        distancia1 = DistanciaImput.getText();
+
+        distancia2 = DistanciaImput.getText();
+
+        distancia3 = DistanciaImput.getText();
+
+        Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia1));
+        Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia2));
+        Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia3));
 
         rec1.start();
         rec2.start();
@@ -168,34 +174,34 @@ public class VerRecorridos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia =DistanciaImput.getText();
+        distancia1 = DistanciaImput.getText();
 
         if (moto == "Motocicleta 1") {
-            Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia));
+            Recorrido rec1 = new Recorrido(Vehiculo1Lbl, Integer.parseInt(distancia1));
             rec1.start();
         }
     }//GEN-LAST:event_Vehiculo1BtnActionPerformed
 
     private void Vehiculo2BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vehiculo2BtnActionPerformed
         // TODO add your handling code here:
-        
+
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia = DistanciaImput.getText();
+        distancia2 = DistanciaImput.getText();
 
         if (moto == "Motocicleta 2") {
-            Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia));
+            Recorrido rec2 = new Recorrido(Vehiculo2Lbl, Integer.parseInt(distancia2));
             rec2.start();
         }
     }//GEN-LAST:event_Vehiculo2BtnActionPerformed
 
     private void Vehiculo3BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vehiculo3BtnActionPerformed
         // TODO add your handling code here:
-        
+
         moto = (String) VehiculoCbo.getSelectedItem();
-        distancia = DistanciaImput.getText();
+        distancia3 = DistanciaImput.getText();
 
         if (moto == "Motocicleta 3") {
-            Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia));
+            Recorrido rec3 = new Recorrido(Vehiculo3Lbl, Integer.parseInt(distancia3));
             rec3.start();
         }
     }//GEN-LAST:event_Vehiculo3BtnActionPerformed

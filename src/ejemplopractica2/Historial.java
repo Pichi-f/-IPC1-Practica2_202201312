@@ -4,11 +4,13 @@
  */
 package ejemplopractica2;
 
+import java.io.Serializable;
+
 /**
  *
  * @author USUARIO
  */
-public class Historial {
+public class Historial implements Serializable{
     
     public String vehiculo;
     public String distancia;

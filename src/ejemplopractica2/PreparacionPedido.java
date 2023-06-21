@@ -26,6 +26,7 @@ public class PreparacionPedido extends javax.swing.JFrame {
     public String precio;
     public String distancia1;
     public String distancia2;
+    public String distancia3;
     public String moto;
     
     public String vehiculo;
@@ -156,9 +157,10 @@ public class PreparacionPedido extends javax.swing.JFrame {
         VerRecorridos vr = new VerRecorridos();
         vr.setVisible(true);
 
-        /* moto = (String) VehiculoCbo.getSelectedItem();
-        String distancia1 = DistanciaImput.getText();
-        String distancia2 = DistanciaImput.getText();*/
+        moto = (String) VehiculoCbo.getSelectedItem();
+        distancia1 = DistanciaImput.getText();
+        distancia2 = DistanciaImput.getText();
+        distancia3 = DistanciaImput.getText();
 
         String distancias = DistanciaImput.getText();
 
