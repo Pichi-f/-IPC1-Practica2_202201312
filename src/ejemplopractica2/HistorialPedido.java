@@ -49,6 +49,7 @@ public class HistorialPedido extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ListadoHistorial.setModel(new javax.swing.table.DefaultTableModel(

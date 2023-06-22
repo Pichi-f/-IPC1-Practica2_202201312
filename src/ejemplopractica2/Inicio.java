@@ -5,6 +5,7 @@
 package ejemplopractica2;
 
 import static ejemplopractica2.HistorialPedido.historiales;
+import static ejemplopractica2.PreparacionPedido.productos;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -56,6 +57,7 @@ public class Inicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -136,35 +138,43 @@ public class Inicio extends javax.swing.JFrame {
         HistorialPedido.historiales[contadorHistoriales] = nuevoHistorial;
         HistorialPedido.contadorHistoriales++;*/
         try {
-            FileOutputStream archivo = new FileOutputStream("./Respaldo.txt");
-            ObjectOutputStream salida = new ObjectOutputStream(archivo);
-            salida.writeObject(historiales);
-            salida.close();
-            archivo.close();
+            FileOutputStream archivoh = new FileOutputStream("./Respaldo.txt");
+            ObjectOutputStream salidah = new ObjectOutputStream(archivoh);
+            salidah.writeObject(historiales);
+            salidah.close();
+            archivoh.close();
             System.out.println("Se ha respaldado su programa en: Respaldo.txt");
         } catch (Exception e) {
             System.out.println(e);
         }
+        
+        try {
+            FileOutputStream archivop = new FileOutputStream("./RespaldoProductos.txt");
+            ObjectOutputStream salidap = new ObjectOutputStream(archivop);
+            salidap.writeObject(productos);
+            salidap.close();
+            archivop.close();
+            System.out.println("Se ha respaldado su programa en: Respaldo.txt");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }//GEN-LAST:event_GuardarBtnActionPerformed
 
     private void ImportarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarBtnActionPerformed
         // TODO add your handling code here:
 
         try {
-            FileInputStream archivo = new FileInputStream("./Respaldo.txt");
-            ObjectInputStream entrada = new ObjectInputStream(archivo);
+            FileInputStream archivoh = new FileInputStream("./Respaldo.txt");
+            ObjectInputStream entradah = new ObjectInputStream(archivoh);
             Historial[] auxiliar = new Historial[50];
-            auxiliar = (Historial[]) entrada.readObject();
-            entrada.close();
-            archivo.close();
+            auxiliar = (Historial[]) entradah.readObject();
+            entradah.close();
+            archivoh.close();
 
-            /*Historial nuevoHistorial = new Historial(vehiculo, distancia, monto, creacion, entrega);
-            int contadorHistoriales = HistorialPedido.contadorHistoriales;
-            HistorialPedido.historiales[contadorHistoriales] = nuevoHistorial;
-            HistorialPedido.contadorHistoriales++;*/
             for (int i = 0; i < auxiliar.length; i++) {
-                Historial obj = new Historial(auxiliar[i].vehiculo, auxiliar[i].distancia, auxiliar[i].monto, auxiliar[i].creacion, auxiliar[i].entrega);
-                historiales[i] = obj;
+                Historial objh = new Historial(auxiliar[i].vehiculo, auxiliar[i].distancia, auxiliar[i].monto, auxiliar[i].creacion, auxiliar[i].entrega);
+                historiales[i] = objh;
                 HistorialPedido.contadorHistoriales++;
             }
             
@@ -173,6 +183,27 @@ public class Inicio extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        
+        try {
+            FileInputStream archivop = new FileInputStream("./RespaldoProductos.txt");
+            ObjectInputStream entradap = new ObjectInputStream(archivop);
+            Producto[] auxiliarp = new Producto[50];
+            auxiliarp = (Producto[]) entradap.readObject();
+            entradap.close();
+            archivop.close();
+
+            for (int i = 0; i < auxiliarp.length; i++) {
+                Producto objp = new Producto(auxiliarp[i].nombre, auxiliarp[i].precio);
+                productos[i] = objp;
+                PreparacionPedido.contadorProductos++;
+            }
+            
+            
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }//GEN-LAST:event_ImportarBtnActionPerformed
 
     /**
